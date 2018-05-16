@@ -18,10 +18,21 @@ func TestSum(t *testing.T) {
 }
 
 func TestSumAll(t *testing.T) {
-	got := SumAll([]int{1, 2}, []int{3, 4})
-	want := []int{3, 7}
+	t.Run("two collections", func(t *testing.T) {
+		got := SumAll([]int{1, 2}, []int{3, 4})
+		want := []int{3, 7}
 
-	if !reflect.DeepEqual(want, got) {
-		t.Errorf("got %v want %v", got, want)
-	}
+		if !reflect.DeepEqual(want, got) {
+			t.Errorf("got %v want %v", got, want)
+		}
+	})
+
+	t.Run("single collection", func(t *testing.T) {
+		got := SumAll([]int{1, 2, 3})
+		want := []int{6}
+
+		if !reflect.DeepEqual(got, want) {
+			t.Errorf("got %v want %v", got, want)
+		}
+	})
 }
