@@ -36,3 +36,14 @@ func TestSumAll(t *testing.T) {
 		}
 	})
 }
+
+func TestSumTailAll(t *testing.T) {
+	t.Run("two collections", func(t *testing.T) {
+		got := SumTailAll([]int{1, 2}, []int{0, 4})
+		want := []int{2, 4}
+
+		if !reflect.DeepEqual(want, got) {
+			t.Errorf("got %v want %v", got, want)
+		}
+	})
+}
