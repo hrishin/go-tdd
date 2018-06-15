@@ -5,10 +5,10 @@ import "testing"
 func TestHelloWorld(t *testing.T) {
 	wallet := Wallet{}
 
-	wallet.Deposite(10)
+	wallet.Deposite(Bitcoin(10))
 
 	got := wallet.Balance()
-	want := 10
+	want := Bitcoin(10)
 
 	if got != want {
 		t.Errorf("got %d want %d", got, want)
