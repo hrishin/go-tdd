@@ -3,15 +3,31 @@ package main
 import "testing"
 
 func TestHelloWorld(t *testing.T) {
-	wallet := Wallet{}
+	t.Run("test deposite", func(t *testing.T) {
 
-	wallet.Deposite(Bitcoin(10))
+		wallet := Wallet{}
 
-	got := wallet.Balance()
-	want := Bitcoin(10)
+		wallet.Deposite(Bitcoin(10))
 
-	if got != want {
-		t.Errorf("got %d want %d", got, want)
-	}
+		got := wallet.Balance()
+		want := Bitcoin(10)
 
+		if got != want {
+			t.Errorf("got %d want %d", got, want)
+		}
+	})
+
+	t.Run("test withdraw", func(t *testing.T) {
+		wallet := Wallet{balance: Bitcoin(20)}
+
+		wallet.Withdraw(10)
+
+		got := wallet.Balance()
+
+		want := Bitcoin(10)
+
+		if got != want {
+			t.Errorf("got %d want %d", got, want)
+		}
+	})
 }
